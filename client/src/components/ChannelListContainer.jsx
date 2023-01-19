@@ -33,6 +33,42 @@ const ChannelListContainer = () => {
       <div className='channel-list__list__wrapper'>
         <CompanyHeader />
         <ChannelSearch />
+        <ChannelList 
+          filters={{}}
+          channelRenderFilterFn={() => {}}
+          // provide a callback function, create a custom list
+          List={(listProps) => (
+            <TeamChannelList
+              // This custom component will get all the props the ChannelList component will usually get using stream
+              {...listProps}
+              type="team"
+            />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview
+              {...previewProps}
+              type="team"
+            />
+          )}
+        />
+        <ChannelList 
+          filters={{}}
+          channelRenderFilterFn={() => {}}
+          // provide a callback function, create a custom list
+          List={(listProps) => (
+            <TeamChannelList
+              // This custom component will get all the props the ChannelList component will usually get using stream
+              {...listProps}
+              type="messaging"
+            />
+          )}
+          Preview={(previewProps) => (
+            <TeamChannelPreview
+              {...previewProps}
+              type="messaging"
+            />
+          )}
+        />
       </div>
     </>
   )
